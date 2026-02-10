@@ -1,7 +1,13 @@
+// api/session.js
 export default function handler(req, res) {
-  // Example: simulate user session
-  // Replace this with your real auth logic (JWT, database, etc.)
-  const userLoggedIn = req.query.user === "true"; // ?user=true to simulate login
+  try {
+    // Simulate a logged-in user
+    // Pass ?user=true in query to simulate login
+    const userLoggedIn = req.query.user === "true";
 
-  res.status(200).json({ loggedIn: userLoggedIn });
+    res.status(200).json({ loggedIn: userLoggedIn });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
